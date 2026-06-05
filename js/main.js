@@ -191,9 +191,10 @@
     frame.appendChild(iframe);
   }
 
+  // Delay slightly to let reveal/animation setup finish before injecting iframe
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initVSL);
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(initVSL, 300); });
   } else {
-    initVSL();
+    setTimeout(initVSL, 300);
   }
 })();
