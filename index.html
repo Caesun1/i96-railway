@@ -36,7 +36,25 @@
   <meta name="ICBM" content="42.9634, -85.6681" />
 
   <!-- Prevent browser scrolling to iframe on load -->
-  <script>if('scrollRestoration'in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+  <script>
+    if('scrollRestoration'in history){history.scrollRestoration='manual';}
+    document.documentElement.style.scrollBehavior='auto';
+    window.scrollTo(0,0);
+    window.addEventListener('load',function(){
+      window.scrollTo(0,0);
+      // Catch iframe load event — this is when mobile browsers try to scroll to the video
+      var iframe=document.getElementById('heroVideo');
+      if(iframe){
+        iframe.addEventListener('load',function(){
+          document.documentElement.style.scrollBehavior='auto';
+          window.scrollTo(0,0);
+          setTimeout(function(){document.documentElement.style.scrollBehavior='';},600);
+        });
+      } else {
+        setTimeout(function(){document.documentElement.style.scrollBehavior='';},600);
+      }
+    });
+  </script>
 
   <link rel="icon" href="images/logo.jpg" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
