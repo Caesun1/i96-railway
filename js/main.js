@@ -163,7 +163,7 @@
   }
 })();
 
-/* ===== Hero VSL video: autoplay muted on page load ===== */
+/* ===== VSL video: autoplay muted on page load ===== */
 (function () {
   var frame = document.getElementById('vslFrame');
   if (!frame) return;
@@ -173,10 +173,9 @@
 
   var iframe = document.createElement('iframe');
   iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
-    '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=' + id;
+    '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1';
   iframe.title = 'I-96 Home Buyers — How It Works';
   iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
   iframe.allowFullscreen = true;
-  frame.innerHTML = '';
   frame.appendChild(iframe);
 })();
