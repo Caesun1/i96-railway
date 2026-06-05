@@ -35,6 +35,9 @@
   <meta name="geo.position" content="42.9634;-85.6681" />
   <meta name="ICBM" content="42.9634, -85.6681" />
 
+  <!-- Prevent browser scrolling to iframe on load -->
+  <script>if('scrollRestoration'in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+
   <link rel="icon" href="images/logo.jpg" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
@@ -208,8 +211,7 @@
           <div id="heroVideoWrap" style="position:relative;width:100%;padding-bottom:56.25%;margin:1.5rem 0;background:#0c1622;border-radius:12px;overflow:hidden;box-shadow:0 16px 40px -8px rgba(0,0,0,0.6);">
             <iframe
               id="heroVideo"
-              src=""
-              data-src="https://www.youtube-nocookie.com/embed/BnZibPUhl9E?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1"
+              src="https://www.youtube-nocookie.com/embed/BnZibPUhl9E?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1"
               title="I-96 Home Buyers — How It Works"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
