@@ -32,7 +32,7 @@ from contextlib import asynccontextmanager
 import httpx
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, field_validator
 
@@ -204,6 +204,29 @@ def list_leads(request: Request):
 @app.get("/")
 def index():
     return FileResponse(os.path.join(HERE, "index.html"))
+
+
+@app.get("/sitemap.xml", response_class=Response)
+def sitemap():
+    content = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.i96homebuyers.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>"""
+    return Response(content=content, media_type="application/xml")
+
+
+@app.get("/robots.txt", response_class=Response)
+def robots():
+    return FileResponse(os.path.join(HERE, "robots.txt"), media_type="text/plain")
+
+
+@app.get("/llms.txt", response_class=Response)
+def llmstxt():
+    return FileResponse(os.path.join(HERE, "llms.txt"), media_type="text/plain")
 
 
 app.mount("/", StaticFiles(directory=HERE, html=True), name="static")
