@@ -2,16 +2,16 @@
    I-96 Home Buyers — interactions
    ============================================================ */
 
-/* Load autoplay video on desktop only — prevents mobile browsers scrolling to video on load */
+/* Load video on desktop only — iframes cause mobile browsers to scroll on load */
 window.addEventListener('load', function () {
+  var wrapper = document.getElementById('heroVideoWrap');
   var video = document.getElementById('heroVideo');
-  if (!video) return;
-  // Only autoplay on desktop (screen width > 768px)
+  if (!video || !wrapper) return;
   if (window.innerWidth > 768) {
     video.src = video.getAttribute('data-src');
   } else {
-    // On mobile: load without autoplay so user taps to play
-    video.src = video.getAttribute('data-src').replace('autoplay=1&', '');
+    // Hide video entirely on mobile — prevents any scroll-to-iframe behavior
+    wrapper.style.display = 'none';
   }
 });
 
