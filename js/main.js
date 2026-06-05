@@ -1,6 +1,11 @@
 /* ============================================================
    I-96 Home Buyers — interactions
    ============================================================ */
+
+/* Force page to top on load — prevents autoplay video scroll on mobile */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.addEventListener('load', function() { window.scrollTo(0, 0); });
+
 (function () {
   'use strict';
 
