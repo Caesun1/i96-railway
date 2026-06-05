@@ -163,33 +163,20 @@
   }
 })();
 
-/* ===== Hero VSL video: click-to-load YouTube embed ===== */
+/* ===== Hero VSL video: autoplay muted on page load ===== */
 (function () {
   var frame = document.getElementById('vslFrame');
-  var playBtn = document.getElementById('vslPlay');
-  if (!frame || !playBtn) return;
+  if (!frame) return;
 
-  function loadVideo() {
-    var id = (frame.getAttribute('data-youtube') || '').trim();
-    if (!id) {
-      // No video ID set yet — gently let the user know.
-      var cap = frame.querySelector('.hero__video-caption');
-      if (cap) cap.textContent = 'Video coming soon';
-      return;
-    }
-    var iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
-      '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1';
-    iframe.title = 'I-96 Home Buyers video';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    iframe.allowFullscreen = true;
-    frame.innerHTML = '';
-    frame.appendChild(iframe);
-  }
+  var id = (frame.getAttribute('data-youtube') || '').trim();
+  if (!id) return;
 
-  playBtn.addEventListener('click', loadVideo);
-  var placeholder = frame.querySelector('.hero__video-placeholder');
-  if (placeholder) placeholder.addEventListener('click', function (e) {
-    if (e.target !== playBtn) loadVideo();
-  });
+  var iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+    '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=' + id;
+  iframe.title = 'I-96 Home Buyers — How It Works';
+  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  iframe.allowFullscreen = true;
+  frame.innerHTML = '';
+  frame.appendChild(iframe);
 })();
