@@ -137,6 +137,7 @@ async def push_to_podio(lead: Lead) -> str:
                 "property-address": lead.address,
                 "seller-phone": [{"type": "mobile", "value": lead.phone}],
                 "seller-email": [{"type": "other", "value": lead.email}],
+                "stage-of-lead": [{"value": 21}],
             }
 
             # Combine condition and timeline into the Notes field
