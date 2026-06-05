@@ -165,17 +165,35 @@
 
 /* ===== VSL video: autoplay muted on page load ===== */
 (function () {
-  var frame = document.getElementById('vslFrame');
-  if (!frame) return;
+  function initVSL() {
+    var frame = document.getElementById('vslFrame');
+    if (!frame) return;
 
-  var id = (frame.getAttribute('data-youtube') || '').trim();
-  if (!id) return;
+    var id = (frame.getAttribute('data-youtube') || '').trim();
+    if (!id) return;
 
-  var iframe = document.createElement('iframe');
-  iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
-    '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1';
-  iframe.title = 'I-96 Home Buyers — How It Works';
-  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-  iframe.allowFullscreen = true;
-  frame.appendChild(iframe);
+    // Apply frame styles inline so they work regardless of CSS load order
+    frame.style.position = 'relative';
+    frame.style.width = '100%';
+    frame.style.paddingBottom = '56.25%';
+    frame.style.background = '#0c1622';
+    frame.style.borderRadius = '12px';
+    frame.style.overflow = 'hidden';
+    frame.style.boxShadow = '0 24px 60px -12px rgba(0,0,0,0.6)';
+
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1';
+    iframe.title = 'I-96 Home Buyers — How It Works';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0';
+    frame.appendChild(iframe);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVSL);
+  } else {
+    initVSL();
+  }
 })();
