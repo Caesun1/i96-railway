@@ -418,6 +418,83 @@ button { cursor: pointer; background: none; border: none; }
   color: rgba(255,255,255,0.82);
   max-width: 48ch;
 }
+
+/* ---- Hero VSL video ---- */
+.hero__video {
+  margin-top: var(--space-8);
+  max-width: 540px;
+}
+.hero__video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 50px -12px rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #0c1622;
+}
+.hero__video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.hero__video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  background:
+    radial-gradient(120% 120% at 50% 25%, rgba(216,31,38,0.28), transparent 60%),
+    linear-gradient(160deg, #142436 0%, #0a1320 100%);
+}
+.hero__video-play {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: var(--color-accent);
+  box-shadow: 0 10px 30px -6px rgba(216,31,38,0.6);
+  transition: transform .18s ease, background .18s ease;
+  padding-left: 4px;
+}
+.hero__video-play:hover { transform: scale(1.08); background: var(--color-accent-hover); }
+.hero__video-play:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.hero__video-play::after {
+  content: "";
+  position: absolute;
+  width: 78px;
+  height: 78px;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(255,255,255,0.4);
+  animation: vslPulse 2.4s ease-out infinite;
+}
+@keyframes vslPulse {
+  0%   { transform: scale(1);   opacity: .7; }
+  100% { transform: scale(1.7); opacity: 0;  }
+}
+.hero__video-caption {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: rgba(255,255,255,0.92);
+  text-align: center;
+  padding: 0 var(--space-6);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__video-play::after { animation: none; }
+}
+
 .hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-8); }
 
 .hero__trust {
