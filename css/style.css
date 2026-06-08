@@ -527,21 +527,26 @@ button { cursor: pointer; background: none; border: none; }
 .sms-consent-field { margin-top: var(--space-4); margin-bottom: var(--space-2); }
 .sms-consent-label {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
   cursor: pointer;
   font-size: 0.72rem;
   line-height: 1.5;
   color: var(--color-text-faint);
+  text-transform: none;
 }
 .sms-consent-label input[type="checkbox"] {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
-  margin-top: 0;
+  min-width: 16px;
+  margin-top: 2px;
   accent-color: var(--color-accent);
   cursor: pointer;
+  display: block;
 }
+.sms-consent-label span { text-transform: none; }
 .sms-consent-label a { color: var(--color-accent); text-decoration: underline; }
 
 .form-note {
