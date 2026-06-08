@@ -125,6 +125,7 @@
       if (!data.name) { setError('name', 'Please enter your name.'); ok = false; }
       if (data.phone && !validPhone(data.phone)) { setError('phone', 'Enter a valid phone number.'); ok = false; }
       if (!validEmail(data.email)) { setError('email', 'Enter a valid email address.'); ok = false; }
+      if (!smsConsent) { setError('smsConsent', 'Please check the box to agree to SMS communications.'); ok = false; }
       if (!ok) {
         var firstErr = form.querySelector('.field--error input, .field--error select');
         if (firstErr) firstErr.focus();
