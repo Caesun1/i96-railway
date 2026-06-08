@@ -234,6 +234,11 @@ def robots():
     return FileResponse(os.path.join(HERE, "robots.txt"), media_type="text/plain")
 
 
+@app.get("/guide.pdf")
+def guide():
+    return FileResponse(os.path.join(HERE, "guide.pdf"), media_type="application/pdf", filename="I96-Cash-Offer-Guide.pdf")
+
+
 @app.get("/llms.txt", response_class=Response)
 def llmstxt():
     return FileResponse(os.path.join(HERE, "llms.txt"), media_type="text/plain")
