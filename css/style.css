@@ -667,7 +667,8 @@ button { cursor: pointer; background: none; border: none; }
 }
 
 @media (max-width: 600px) {
-  .calendly-embed { height: 1000px; }
+  .calendly-embed { height: auto; }
+  .calendly-embed iframe { height: 700px !important; }
 }
 
 /* ============================================================
