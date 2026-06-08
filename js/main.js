@@ -148,7 +148,8 @@
         .then(function () {
           form.style.display = 'none';
           success.classList.add('active');
-          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          initCalendly();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
         })
         .catch(function () {
           submitBtn.disabled = false;
@@ -164,6 +165,24 @@
         setError(el.name, '');
       });
     });
+  }
+
+  /* ---- Calendly inline embed (loaded only after a successful submit) ---- */
+  var calendlyLoaded = false;
+  function initCalendly() {
+    var el = document.getElementById('calendlyEmbed');
+    if (!el || calendlyLoaded) return;
+    var url = el.getAttribute('data-url');
+
+    function build() {
+      if (window.Calendly && window.Calendly.initInlineWidget) {
+        window.Calendly.initInlineWidget({ url: url, parentElement: el });
+        calendlyLoaded = true;
+      } else {
+        setTimeout(build, 250); // widget.js still loading (async)
+      }
+    }
+    build();
   }
 })();
 
