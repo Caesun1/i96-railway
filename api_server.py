@@ -206,6 +206,16 @@ def index():
     return FileResponse(os.path.join(HERE, "index.html"))
 
 
+@app.get("/privacy.html")
+def privacy():
+    return FileResponse(os.path.join(HERE, "privacy.html"))
+
+
+@app.get("/terms.html")
+def terms():
+    return FileResponse(os.path.join(HERE, "terms.html"))
+
+
 @app.get("/sitemap.xml", response_class=Response)
 def sitemap():
     content = """<?xml version="1.0" encoding="UTF-8"?>
