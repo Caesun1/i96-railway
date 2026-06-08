@@ -277,8 +277,8 @@
               </div>
               <div class="form-row form-row--2">
                 <div class="field">
-                  <label for="phone">Phone <span class="req">*</span></label>
-                  <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(616) 555-0123" required />
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(616) 555-0123" />
                   <span class="field__msg" data-msg-for="phone"></span>
                 </div>
                 <div class="field">
@@ -309,9 +309,18 @@
                   </select>
                 </div>
               </div>
+              <!-- SMS Consent Checkbox — required for 10DLC compliance -->
+              <div class="field sms-consent-field">
+                <label class="sms-consent-label">
+                  <input type="checkbox" id="smsConsent" name="smsConsent" />
+                  <span>I agree to receive text messages (SMS) from I-96 Home Buyers about my property and offer. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help. Consent is not a condition of any purchase or sale. See our <a href="/privacy.html" target="_blank">Privacy Policy</a> and <a href="/terms.html" target="_blank">Terms of Use</a>.</span>
+                </label>
+                <span class="field__msg" data-msg-for="smsConsent"></span>
+              </div>
+
               <button type="submit" class="btn btn--accent btn--block btn--lg" id="submitBtn">Get My Cash Offer →</button>
               <p class="form-consent">
-                By submitting, you agree that I-96 Home Buyers may call, text, and email you about your property and offer. Msg &amp; data rates may apply; reply STOP to opt out. Consent is not a condition of any sale. By submitting you agree to our <a href="/privacy.html" target="_blank" style="color:inherit;text-decoration:underline">Privacy Policy</a> and <a href="/terms.html" target="_blank" style="color:inherit;text-decoration:underline">Terms of Use</a>.
+                By submitting, you agree that I-96 Home Buyers may call and email you about your property and offer. Your information is never sold.
               </p>
               <p class="form-note">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>

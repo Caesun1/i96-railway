@@ -107,22 +107,23 @@
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var smsConsent = form.smsConsent ? form.smsConsent.checked : false;
       var data = {
         address: form.address.value.trim(),
         name: form.name.value.trim(),
         phone: form.phone.value.trim(),
         email: form.email.value.trim(),
         condition: form.condition.value,
-        timeline: form.timeline.value,
+        timeline: form.timeline.value + (smsConsent ? ' | SMS consent: YES' : ' | SMS consent: NO'),
       };
 
       var ok = true;
-      ['address', 'name', 'phone', 'email'].forEach(function (k) {
+      ['address', 'name', 'email'].forEach(function (k) {
         setError(k, '');
       });
       if (!data.address) { setError('address', 'Please enter the property address.'); ok = false; }
       if (!data.name) { setError('name', 'Please enter your name.'); ok = false; }
-      if (!validPhone(data.phone)) { setError('phone', 'Enter a valid phone number.'); ok = false; }
+      if (data.phone && !validPhone(data.phone)) { setError('phone', 'Enter a valid phone number.'); ok = false; }
       if (!validEmail(data.email)) { setError('email', 'Enter a valid email address.'); ok = false; }
       if (!ok) {
         var firstErr = form.querySelector('.field--error input, .field--error select');
