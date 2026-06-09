@@ -149,6 +149,8 @@
           form.style.display = 'none';
           success.classList.add('active');
           initCalendly();
+          // Facebook Pixel — fire Lead event on successful form submission
+          if (typeof fbq === 'function') { fbq('track', 'Lead'); }
           success.scrollIntoView({ behavior: 'smooth', block: 'start' });
         })
         .catch(function () {
