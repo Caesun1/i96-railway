@@ -138,6 +138,7 @@ async def push_to_podio(lead: Lead) -> str:
                 "seller-phone": [{"type": "mobile", "value": lead.phone}],
                 "seller-email": [{"type": "other", "value": lead.email}],
                 "stage-of-lead": [{"value": 21}],
+                "lead-source": [{"value": 9}],  # 9 = "Website Form"
             }
 
             # Combine condition and timeline into the Notes field
